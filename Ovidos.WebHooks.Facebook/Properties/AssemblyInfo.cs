@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Ovidos.WebHooks.Facebook")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Ovidos Asp.Net Facebook WebHook")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Ovidos Creative")]
 [assembly: AssemblyProduct("Ovidos.WebHooks.Facebook")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("Ovidos Creative")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
