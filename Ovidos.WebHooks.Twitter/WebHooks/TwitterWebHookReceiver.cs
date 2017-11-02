@@ -147,9 +147,9 @@ namespace Ovidos.WebHooks.Twitter
             }
 
             // Now verify that the provided hash matches the expected hash.
-            if (!WebHookReceiver.SecretEqual(expectedHash, actualHash))
+            if (!SecretEqual(expectedHash, actualHash))
             {
-                HttpResponseMessage badSignature = CreateBadSignatureResponse(request, SignatureHeaderName);
+                var badSignature = CreateBadSignatureResponse(request, SignatureHeaderName);
                 throw new HttpResponseException(badSignature);
             }
         }
