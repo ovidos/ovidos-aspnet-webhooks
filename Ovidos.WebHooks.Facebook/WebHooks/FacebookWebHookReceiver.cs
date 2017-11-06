@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
@@ -77,7 +76,7 @@ namespace Ovidos.WebHooks.Facebook
             {
                 var queryParameters = request.RequestUri.ParseQueryString();
                 string secretKey = await GetReceiverConfig(request, Name, id, SecretMinLength, SecretMaxLength);
-                if (queryParameters["hub.mode"] == "subscribe" && queryParameters["hub.verifytoken"] == secretKey)
+                if (queryParameters["hub.mode"] == "subscribe" && queryParameters["hub.verify_token"] == secretKey)
                 {
                     var challenge = queryParameters["hub.challenge"];
                     return request.CreateResponse(HttpStatusCode.OK, challenge);
@@ -136,7 +135,7 @@ namespace Ovidos.WebHooks.Facebook
             }
 
             // Now verify that the provided hash matches the expected hash.
-            if (!WebHookReceiver.SecretEqual(expectedHash, actualHash))
+            if (SecretEqual(expectedHash, actualHash))
             {
                 HttpResponseMessage badSignature = CreateBadSignatureResponse(request, SignatureHeaderName);
                 throw new HttpResponseException(badSignature);
