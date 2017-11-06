@@ -80,7 +80,7 @@ namespace Ovidos.WebHooks.Facebook
                 if (queryParameters["hub.mode"] == "subscribe" && queryParameters["hub.verifytoken"] == secretKey)
                 {
                     var challenge = queryParameters["hub.challenge"];
-                    request.CreateResponse(HttpStatusCode.OK, challenge);
+                    return request.CreateResponse(HttpStatusCode.OK, challenge);
 
                 }
                 var msg = string.Format(CultureInfo.CurrentCulture, FacebookReceiverResources.Receiver_BadSecret);

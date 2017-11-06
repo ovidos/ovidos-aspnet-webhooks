@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ovidos.WebHooks.Facebook", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ovidos.WebHooks.Twitter", "Ovidos.WebHooks.Twitter\Ovidos.WebHooks.Twitter.csproj", "{105F5CAA-19A7-46E1-AD05-617C68B3A09C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ovidos.WebHooks.Web.Test", "Ovidos.WebHooks.Web.Test\Ovidos.WebHooks.Web.Test.csproj", "{6D8007A8-DE41-49CD-8852-97E0F80AF71A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{105F5CAA-19A7-46E1-AD05-617C68B3A09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{105F5CAA-19A7-46E1-AD05-617C68B3A09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{105F5CAA-19A7-46E1-AD05-617C68B3A09C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D8007A8-DE41-49CD-8852-97E0F80AF71A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D8007A8-DE41-49CD-8852-97E0F80AF71A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D8007A8-DE41-49CD-8852-97E0F80AF71A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D8007A8-DE41-49CD-8852-97E0F80AF71A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

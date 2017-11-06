@@ -91,7 +91,7 @@ namespace Ovidos.WebHooks.Twitter
                     {
                         response_token = hash64
                     };
-                    request.CreateResponse(HttpStatusCode.OK, response);
+                    return request.CreateResponse(HttpStatusCode.OK, response);
 
                 }
                 var msg = string.Format(CultureInfo.CurrentCulture, TwitterReceiverResources.Receiver_BadSecret);
