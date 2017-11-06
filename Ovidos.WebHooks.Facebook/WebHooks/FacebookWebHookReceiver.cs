@@ -79,7 +79,9 @@ namespace Ovidos.WebHooks.Facebook
                 if (queryParameters["hub.mode"] == "subscribe" && queryParameters["hub.verify_token"] == secretKey)
                 {
                     var challenge = queryParameters["hub.challenge"];
-                    return request.CreateResponse(HttpStatusCode.OK, challenge);
+                    var response =  request.CreateResponse<long>(HttpStatusCode.OK, long.Parse(challenge));
+                    return response;
+
 
                 }
                 var msg = string.Format(CultureInfo.CurrentCulture, FacebookReceiverResources.Receiver_BadSecret);
