@@ -79,7 +79,7 @@ namespace Ovidos.WebHooks.Facebook
                 if (queryParameters["hub.mode"] == "subscribe" && queryParameters["hub.verify_token"] == secretKey)
                 {
                     var challenge = queryParameters["hub.challenge"];
-                    var response =  request.CreateResponse<long>(HttpStatusCode.OK, long.Parse(challenge));
+                    var response =  request.CreateResponse(HttpStatusCode.OK, long.Parse(challenge));
                     return response;
 
 
@@ -137,7 +137,7 @@ namespace Ovidos.WebHooks.Facebook
             }
 
             // Now verify that the provided hash matches the expected hash.
-            if (SecretEqual(expectedHash, actualHash))
+            if (!SecretEqual(expectedHash, actualHash))
             {
                 HttpResponseMessage badSignature = CreateBadSignatureResponse(request, SignatureHeaderName);
                 throw new HttpResponseException(badSignature);
