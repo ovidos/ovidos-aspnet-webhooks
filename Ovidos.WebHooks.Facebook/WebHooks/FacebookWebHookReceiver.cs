@@ -115,9 +115,10 @@ namespace Ovidos.WebHooks.Facebook
             }
 
             byte[] expectedHash;
+            var headerHash = values[1];
             try
             {
-                expectedHash = EncodingUtilities.FromHex(values[1].ToUpper());
+                expectedHash = EncodingUtilities.FromHex(headerHash);
             }
             catch (Exception ex)
             {
@@ -138,9 +139,9 @@ namespace Ovidos.WebHooks.Facebook
             }
 
             // Now verify that the provided hash matches the expected hash.
-            if (!SecretEqual(expectedHash, actualHash))
+            if (!string.Equals(headerHash, ByteArrayToString(actualHash), StringComparison.CurrentCultureIgnoreCase))
             {
-                HttpResponseMessage badSignature = CreateBadSignatureResponse(request, SignatureHeaderName);
+                var badSignature = CreateBadSignatureResponse(request, SignatureHeaderName);
                 throw new HttpResponseException(badSignature);
             }
         }
@@ -161,6 +162,12 @@ namespace Ovidos.WebHooks.Facebook
                 }
             }
             return sb.ToString();
+        }
+
+        private string ByteArrayToString(byte[] ba)
+        {
+            var hex = BitConverter.ToString(ba);
+            return hex.Replace("-", "");
         }
 
     }
