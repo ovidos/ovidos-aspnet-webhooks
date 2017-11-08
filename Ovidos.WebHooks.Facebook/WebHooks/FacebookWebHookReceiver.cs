@@ -117,7 +117,7 @@ namespace Ovidos.WebHooks.Facebook
             byte[] expectedHash;
             try
             {
-                expectedHash = EncodingUtilities.FromHex(values[1]);
+                expectedHash = EncodingUtilities.FromHex(values[1].ToUpper());
             }
             catch (Exception ex)
             {
