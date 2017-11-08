@@ -132,7 +132,8 @@ namespace Ovidos.WebHooks.Facebook
             byte[] secret = Encoding.UTF8.GetBytes(secretKey);
             using (var hasher = new HMACSHA1(secret))
             {
-                byte[] data = await request.Content.ReadAsByteArrayAsync();
+                var payload = EncodeNonAsciiCharacters(await request.Content.ReadAsStringAsync());           
+                var data = Encoding.UTF8.GetBytes(payload);
                 actualHash = hasher.ComputeHash(data);
             }
 
@@ -143,5 +144,24 @@ namespace Ovidos.WebHooks.Facebook
                 throw new HttpResponseException(badSignature);
             }
         }
+
+        private string EncodeNonAsciiCharacters(string value)
+        {
+            var sb = new StringBuilder();
+            foreach (var c in value)
+            {
+                if (c > 127)
+                {
+                    var encodedValue = "\\u" + ((int)c).ToString("x4");
+                    sb.Append(encodedValue);
+                }
+                else
+                {
+                    sb.Append(c);
+                }
+            }
+            return sb.ToString();
+        }
+
     }
 }
