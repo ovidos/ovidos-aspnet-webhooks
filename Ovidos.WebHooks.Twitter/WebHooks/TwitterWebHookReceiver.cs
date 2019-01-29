@@ -21,7 +21,7 @@ namespace Ovidos.WebHooks.Twitter
     /// to differentiate between multiple WebHooks, for example '<c>secret0, id1=secret1, id2=secret2</c>'.
     /// The corresponding WebHook URI is of the form '<c>https://&lt;host&gt;/api/webhooks/incoming/facebook/{id}</c>'.
     /// </summary>
-    public class FacebookWebHookReceiver : WebHookReceiver
+    public class TwitterkWebHookReceiver : WebHookReceiver
     {
         internal const string RecName = "twitter";
         internal const int SecretMinLength = 16;
@@ -89,7 +89,7 @@ namespace Ovidos.WebHooks.Twitter
                     var hash64 = Convert.ToBase64String(actualHash);
                     var response = new
                     {
-                        response_token = hash64
+                        response_token = $"sha256={hash64}"
                     };
                     return request.CreateResponse(HttpStatusCode.OK, response);
 
