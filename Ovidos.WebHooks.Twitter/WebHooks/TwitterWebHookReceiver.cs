@@ -127,7 +127,7 @@ namespace Ovidos.WebHooks.Twitter
             byte[] expectedHash;
             try
             {
-                expectedHash = EncodingUtilities.FromHex(values[1]);
+                expectedHash = EncodingUtilities.FromBase64(values[1]);
             }
             catch (Exception ex)
             {
